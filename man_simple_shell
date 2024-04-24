@@ -1,0 +1,110 @@
+.TH HSH_SIMPLESHELL 1 "April 2024" "Jiguet Catherine and Rosereau Maïlys"
+
+.SH NAME
+HSH Simple Shell \- A simple UNIX command-line shell in C
+
+.SH SYNOPSIS
+.B #include "main.h"
+.br
+.B int main(void);
+
+.SH DESCRIPTION
+Simple Shell is a simple UNIX shell implementation written in C. It provides basic shell functionalities such as executing commands, managing environment variables, and exiting the shell.
+
+.PP
+In Simple Shell, you can execute commands, print environment variables, and exit the shell.
+
+.SH COMMANDS
+The following commands are supported:
+
+.TP
+.B [command] [arguments]
+Execute the specified command with the given arguments. If the command is not found in the PATH or cannot be executed, an error message is displayed.
+
+.TP
+.B exit [status]
+Exit the shell with the given exit status. If no status is provided, the exit status of the last command executed is used. If the status is not a valid integer or contains more than one argument, an error message is displayed.
+.nf
+Example:
+$ exit 0
+.fi
+
+.TP
+.B env
+Print the environment variables to standard output.
+
+.PP
+All other commands are executed as external commands. The shell searches for these commands in the directories listed in the PATH environment variable.
+
+.SH INVOCATION
+The shell in interactive mode can be invoked in the following ways:
+.B ./hsh
+
+.SH DEFINITIONS
+.TP
+.B PATH
+A colon-separated list of directories in which the shell looks for commands.
+
+.TP
+.B exit status
+An integer value indicating the success or failure of a command.
+
+.SH SHELL GRAMMAR
+The shell grammar consists of the following elements:
+
+.TP
+.B |
+Pipe directs the output of one command to the input of another.
+
+.TP
+.B >
+Redirects the output of a command to a file.
+
+.TP
+.B <
+Redirects the input of a command from a file.
+
+.SH RETURN VALUE
+Simple Shell returns the exit status of the last command executed. If the shell is terminated using the exit command, the specified status is returned.
+
+.SH EXAMPLES
+.TP
+.B ls
+List the files in the current directory.
+
+.TP
+.B ls -l
+List the files in the current directory in long format.
+
+.TP
+.B pwd
+Print the current working directory.
+
+.TP
+.B /bin/ls
+Execute the /bin/ls command.
+
+.TP
+.B echo "/bin/ls" | ./hsh
+Execute the /bin/ls command by piping its path to the shell.
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Written by Jiguet Catherine and Rosereau Maïlys.
+
+.SH REPORTING BUGS
+Report any bugs to <8831@holbertonstudents.com> or <8685@holbertonstudents.com>.
+
+.SH COPYRIGHT
+This is free and unencumbered software released into the public domain.
+
+.SH SEE ALSO
+.BR exit (1),
+.BR env (1),
+.BR execve (2),
+.BR fork (2),
+.BR wait (2),
+.BR getenv (3)
+
